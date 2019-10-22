@@ -6,16 +6,16 @@
     // background-image: linear-gradient(to right bottom, 
     // rgba(0,0,0,0.5),
     // rgba(0,0,0,0.5));
-    background-color: $tertiary;
     margin: 5px;
   }
   #large-media-card{
     margin-bottom: 70px;
   }
   .media{
-    border: 1px solid $tertiary;
+    border: 1px solid gray;
     padding: 10px 20px 10px 10px;
     border-radius: 10px;
+    margin-top: 10px;
   }
  #small-media-card{
     margin-bottom: 70px;
@@ -27,6 +27,7 @@
 
  .card{
   margin-bottom: 10px;
+  
   
 }
 
@@ -41,3 +42,4 @@
 .comment-alert{
   display: none;
 }
+

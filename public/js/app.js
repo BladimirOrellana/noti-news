@@ -2,6 +2,45 @@ $(document).ready(function(){
 
     //FUNCTION TO GET ALL DATA FROM /API/POSTS AND USED FOR SIDEBAR CONTENT
     const getSidebarPosts = function(){
+       $("#search").on('click', function(e){
+           e.preventDefault();
+           var section = $(this).data('value');
+           $.ajax({
+            url: '/'+section,
+            type: "GET"
+        }).then(function(result){
+            if(result){
+               $(".scraping").modal('show');
+               $(".modal-body").css({"background-color": "black", "opacity": 0.8, "text-align": "center"});
+               $(".modal-body")
+               .html(
+                `
+                <h3>Getting Data</h3>
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+
+               `);
+               setTimeout(function(){
+                $(".modal-body").css({"background-color": "green", "opacity": 0.8, "text-align": "center"});
+              
+                $(".modal-body")
+                .html(
+                 `
+                 <h3>Data Found</h3>
+                 <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                 <span class="sr-only">Loading...</span>
+               </div>
+                `);
+                setTimeout(function(){
+                  window.location.href = "/food";
+                   },1000)
+               },1000)
+              
+            }
+        })
+         
+       })
         $.ajax({
             url: '/api/saved/posts',
             type: "GET"
@@ -54,9 +93,13 @@ $(document).ready(function(){
 
     // END FUNCTION getSidebarPosts()
 
-$(".id").on('click', function(){
-    
+$(".save-post").on('click', function(){
+    $(this).css({"border": "1px solid green", "background-color": "green"})
+    $(this).html(`Saved`)
+
+
     var id = $(this).data('id');
+   
     $.ajax({
         url: "/save/"+id,
         type: "GET"

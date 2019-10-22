@@ -5,7 +5,6 @@
 
 .section-header {
   height: 50vh;
-  background-color: #562CFF;
   margin: 30px;
   text-align: center;
   text-transform: uppercase;
@@ -24,21 +23,25 @@
   text-decoration: none;
   color: #4039b6; }
 
+a {
+  text-decoration: none;
+  color: black; }
+
 .header {
   padding-top: 100px;
   padding-bottom: 150px; }
 
 .header-index {
-  background-color: #562CFF;
   margin: 5px; }
 
 #large-media-card {
   margin-bottom: 70px; }
 
 .media {
-  border: 1px solid #562CFF;
+  border: 1px solid gray;
   padding: 10px 20px 10px 10px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  margin-top: 10px; }
 
 #small-media-card {
   margin-bottom: 70px; }
@@ -61,3 +64,7 @@
   background-color: #1F69FF;
   color: white;
   padding: 100px  0 100px 0; }
+
+.footer-icons {
+  font-size: 30px;
+  padding: 20px; }

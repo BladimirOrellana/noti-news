@@ -13,13 +13,15 @@ module.exports = function(app){
 
     app.get('/',(req,res)=>{
 
-        res.render("index");
+        db.Food.find().then(function(result){
+            res.render('index', {data: result})
+        })
         
           
     })
  
     app.get('/save/:id',(req,res)=>{
-        console.log("K")
+       
 console.log(req.params.id)
         db.Food.find({_id: req.params.id}).then((result)=>{
            var savePost = {
@@ -144,7 +146,7 @@ const scrapeSearch = function(search){
           
     // Add the text and href of every link, and save them as properties of the result object
          const  result = { 
-         title: $(element).find(".headline").text().replace(/\s\s+/g, '') || $(element).find("h2").text().replace(/\s\s+/g, ''),
+         title: $(element).find(".headline").text().replace(/\s\s+/g, ''),
          link: $(element).find("a").attr("href"),
          photo: $(element).find("img").attr("src")
          }
