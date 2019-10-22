@@ -1,18 +1,23 @@
 require('dotenv').config();
+var $ = require('jquery')
 const express = require('express');
-const mongoose = require('mongoose')
 const axious = require('axios')
+const xhandlebars = require('express-handlebars');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.engine('handlebars', xhandlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+require('./routes/htmlRoutes')(app)
+require('./routes/apiRoutes')(app)
 
-mongoose.connect(MONGODB_URI);
-app.get('/',(req,res)=>{
-    res.send("HELLO");
-})
+
+
 app.listen(PORT, ()=>{
     console.log("APP On PORT ", PORT)
 })

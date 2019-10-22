@@ -1,0 +1,63 @@
+/* Color Theme Swatches in Hex */
+*::after::before {
+  margin: 0;
+  padding: 0; }
+
+.section-header {
+  height: 50vh;
+  background-color: #562CFF;
+  margin: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px; }
+
+.black {
+  color: black; }
+
+.primary {
+  color: #C61FFF; }
+
+.card-dark {
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
+
+.card a {
+  text-decoration: none;
+  color: #4039b6; }
+
+.header {
+  padding-top: 100px;
+  padding-bottom: 150px; }
+
+.header-index {
+  background-color: #562CFF;
+  margin: 5px; }
+
+#large-media-card {
+  margin-bottom: 70px; }
+
+.media {
+  border: 1px solid #562CFF;
+  padding: 10px 20px 10px 10px;
+  border-radius: 10px; }
+
+#small-media-card {
+  margin-bottom: 70px; }
+  #small-media-card:hover {
+    box-shadow: 15px 5px 15px; }
+
+.card {
+  margin-bottom: 10px; }
+
+.btn {
+  margin: 10px; }
+
+.menu-options {
+  display: none; }
+
+.comment-alert {
+  display: none; }
+
+.footer-container {
+  background-color: #1F69FF;
+  color: white;
+  padding: 100px  0 100px 0; }

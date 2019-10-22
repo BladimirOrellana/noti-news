@@ -1,0 +1,95 @@
+<title>Home</title>
+  <head>
+    <div class="jumbotron text-center header header-index">
+  <h1 class="display-4">WELCOME TO NOTI-NEWS</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a data-value="food" href="/food" class="btn btn-primary btn-lg"  id="search-food" role="button">Search</a>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8" id="large-media-card">
+      <div class="">
+      <div class="media">
+  <img src="https://source.unsplash.com/random" width="70" height="70" class="mr-3" alt="...">
+  <div class="media-body">
+    <h5 class="mt-0">Media heading</h5>
+    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea consequatur, quaerat quas labore, quae officia neque magnam, maxime ipsam repellat deserunt! Distinctio quibusdam quo laboriosam officiis eaque eius assumenda quis!
+    
+  </div>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+          <a data-value="food" class="btn btn-primary btn-block"  id="search-food" role="button">Save</a>
+
+          <a data-value="food" class="btn btn-primary btn-block"  id="search-food" role="button">Hide</a>
+
+
+      </div>
+    </div>
+  </div>
+  
+</div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4" id="small-media-card">
+      <div class="container">
+        <div class="h2">Saved Posts</div>
+      </div>
+      <div class="side-bar">
+
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- DELETING MESSAGE MODAL --}}
+ <div class="modal fade deleted" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <div class="modal-body deleted-message">
+       Deleting...
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{!-- COMMENT MODAL --}}
+  <div class="modal fade comment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      
+             <div class="alert alert-danger comment-alert" role="alert">
+ Please Write a comment
+</div>
+   <div class="modal-body deleted-message">
+       <form>
+  <div class="form-group">
+     <input type="text" class="form-control" id="comment-title" aria-describedby="emailHelp" placeholder="Title">
+  </div>
+    <div class="form-group">
+     <textarea class="form-control" id="comment-body" rows="3" placeholder="Write..."></textarea>
+  </div>
+ <button type="submit"  class="btn btn-primary btn-block save-comment">Save</button>
+</form>
+      </div>
+      <div class="card">
+  <div class="card-body comments-body">
+  
+  </div>
+  
+</div>
+    </div>
+  </div>
+</div>
+  
+  
+
