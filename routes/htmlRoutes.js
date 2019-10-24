@@ -10,7 +10,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/noti_news";
 mongoose.connect(MONGODB_URI);
 
 module.exports = function(app){
-
+//INDEX PAGE ROUTE
     app.get('/',(req,res)=>{
 
         db.Food.find().then(function(result){
@@ -20,6 +20,10 @@ module.exports = function(app){
           
     })
  
+        
+          
+    
+ //SAVE POST ROUTE
     app.get('/save/:id',(req,res)=>{
        
 console.log(req.params.id)
@@ -29,15 +33,21 @@ console.log(req.params.id)
                link: result[0].link,
                photo: result[0].photo
            }
-           console.log(savePost)
-           db.Save.create(savePost).then((result)=>{
-               
+           db.Save.create(savePost).then((results)=>{
+            if(results){
+                const success = 1;
+                res.json(success)
+            }else{
+                const success = 0; 
+                res.json(success)
+            }
            })
            
         })
         
           
     }) 
+    //DELETE  SAVED POST ROUTE
     app.get('/delete/:id',(req,res)=>{
         console.log(req.params.id)
                
@@ -46,7 +56,7 @@ console.log(req.params.id)
 
                 });
             }) 
-//Delete post route
+//Delete Cooment   route
             app.get('/delete/comment/:commentId',(req,res)=>{
                  db.Comment.deleteOne({ _id: req.params.commentId }).then((result)=>{
                             console.log(result.ok)
@@ -54,7 +64,7 @@ console.log(req.params.id)
         
                         });
                     }) 
-//COOMENT ROUTE
+
             app.get('/comment/:id',(req,res)=>{
                 console.log(req.params.id)
                        
@@ -63,11 +73,11 @@ console.log(req.params.id)
                             res.json(result)
         
                         }).catch(function(err) {
-                            // If an error occurred, send it to the client
+                          
                             res.json(err);
                           });
                     }) 
-                    //SAVE  POST COOMENT
+                   //save id of comment in the saved posts Collection  
                     app.post('/comment/:id',(req,res)=>{
                         req.baseUrl.new = true;
                   if(req.body.title && req.body.body){

@@ -22,7 +22,14 @@ module.exports = function(app){
        })
        app.get('/api/saved/posts',(req,res)=>{
         db.Save.find({}).then(function(result){
-            res.json(result)
+            if(result.length === 0){
+                res.json(result.length)
+             
+            }else{
+             
+                res.json(result)
+           
+            }
         })
        })
 

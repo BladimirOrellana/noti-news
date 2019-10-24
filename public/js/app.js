@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     //FUNCTION TO GET ALL DATA FROM /API/POSTS AND USED FOR SIDEBAR CONTENT
-    const getSidebarPosts = function(){
+    const scrape = function(){
        $("#search").on('click', function(e){
            e.preventDefault();
            var section = $(this).data('value');
@@ -41,32 +41,39 @@ $(document).ready(function(){
         })
          
        })
-        $.ajax({
+     //Get saved Posts 
+     const savedPosts = function(){ $.ajax({
             url: '/api/saved/posts',
             type: "GET"
         }).then(function(result){
-           for (var i = 0; i< result.length; i++){
+        if(result === 0){
+            $(".saved-posts-container").html(`<h1 class="text-muted">No saved Posts</h1>`);
+
+        }else{
+            $(".saved-posts-container").html(`<h1 class="text-muted">Saved Posts</h1>`);
+            for (var i = 0; i< result.length; i++){
                
-            var contet = $("<div>");
-            contet.addClass("card");
-            contet.html(
-            `
-            <img src="${result[i].photo}" height="300"  class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">${result[i].title}</h5>
-             <a href="${result[i].link}" class="btn btn-primary btn-block">Read</a>
-             <i class="fas fa-ellipsis-v menu menu-off"></i>
-             <ul class="list-group menu-options">
-  <li class="list-group-item delete-post" data-id="${result[i]._id}"><i class="fas fa-trash-alt"></i></li>
-  <li class="list-group-item write-comment" data-id="${result[i]._id}"><i class="fas fa-comment"></i></li>
-  
-</ul>
-
-            `)
- $(".side-bar").prepend(contet)
-
-
-           }
+                var contet = $("<div>");
+                contet.addClass("card");
+                contet.html(
+                `
+                <img src="${result[i].photo}" height="300"  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${result[i].title}</h5>
+                 <a href="${result[i].link}" class="btn btn-primary btn-block">Read</a>
+                 <i data-menu="${result[i]._id}" class="fas fa-ellipsis-v menu menu-off"></i>
+                 <ul class="list-group menu-options">
+      <li class="list-group-item delete-post" data-id="${result[i]._id}"><i class="fas fa-trash-alt"></i></li>
+      <li class="list-group-item write-comment" data-id="${result[i]._id}"><i class="fas fa-comment"></i></li>
+      
+    </ul>
+    
+                `)
+     $(".side-bar").prepend(contet)
+    
+    
+               }
+        }
 
      
 
@@ -87,13 +94,15 @@ $(document).ready(function(){
             }
          })
         })
-
     }
-    getSidebarPosts()
+    savedPosts();
+    }
+    scrape()
 
-    // END FUNCTION getSidebarPosts()
+    // END FUNCTION scrape()
 
 $(".save-post").on('click', function(){
+   
     $(this).css({"border": "1px solid green", "background-color": "green"})
     $(this).html(`Saved`)
 
@@ -105,6 +114,7 @@ $(".save-post").on('click', function(){
         type: "GET"
     }).then(function(result){
 console.log(result)
+location.reload()
     })
 })
 
@@ -222,4 +232,6 @@ var getComments = function(postId){
        }
     })
 }
+
+
 })
