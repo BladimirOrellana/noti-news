@@ -29,6 +29,6 @@
     "jquery": "^3.4.1",
     "mongojs": "^2.6.0",
     "mongoose": "^5.7.5",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   }
 }
